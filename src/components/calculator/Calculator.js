@@ -83,23 +83,28 @@ const Calculator = () => {
     }
 
     return (
-        <div className="calculator">
-            <div className="calculator__result">
-                <div ref={expRef} className="calculator__result__exp"></div>
-                <div className="calculator__result__exp"></div>
+        <div>
+            <div className="title">
+                <h1>React Js Calculator</h1>
             </div>
-            <div ref={btnsRef} className="calculator__btns">
-                {
-                    btns.map((item, index) => (
-                        <button
-                            key={index}
-                            className={item.class}
-                            onClick={() => btnClick(item)}
-                        >
-                            {item.display}
-                        </button>
-                    ))
-                }
+            <div className="calculator">
+                <div className="calculator__result">
+                    <div ref={expRef} className="calculator__result__exp"></div>
+                    <div className="calculator__result__exp"></div>
+                </div>
+                <div ref={btnsRef} className="calculator__btns">
+                    {
+                        btns.map((item, index) => (
+                            <button
+                                key={index}
+                                className={item.class}
+                                onClick={() => btnClick(item)}
+                            >
+                                {item.display}
+                            </button>
+                        ))
+                    }
+                </div>
             </div>
         </div>
     );

@@ -76,7 +76,7 @@ function Calculator() {
 
 
   return (
-    <div>
+    <div className="main_container">
       <div className="container">
 
         <h1 className="title">React Calculator</h1>

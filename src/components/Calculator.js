@@ -7,7 +7,7 @@ function Calculator() {
   const [prev, setPrev] = useState('');
   const [actionv, setActionv] = useState('');
   const [result, setResult] = useState('');
-  var res='';
+  var res = '';
   const numberButton = (e) => {
     let temp = e.target.name;
 
@@ -20,13 +20,13 @@ function Calculator() {
 
     let temp = e.target.name;
     setDisplay((e) => e + temp)
-    if (prev==='') {
+    if (prev === '') {
       setPrev(currv);
       console.log(currv)
       setCurrv('');
       setActionv(temp);
     }
-    if (prev!=='') {
+    if (prev !== '') {
       setPrev(res);
       setActionv(temp)
       console.log(setPrev)
@@ -34,27 +34,27 @@ function Calculator() {
   }
 
   const resultButton = () => {
-    if (actionv==='/') {
-      res = parseFloat(prev)/parseFloat(currv)
+    if (actionv === '/') {
+      res = parseFloat(prev) / parseFloat(currv)
       setPrev(res)
     }
-    else if(actionv==='x') {
-      res = parseFloat(prev)*parseFloat(currv)
+    else if (actionv === 'x') {
+      res = parseFloat(prev) * parseFloat(currv)
       setPrev(res)
     }
-    else if(actionv==='+') {
-      res = parseFloat(prev)+parseFloat(currv)
+    else if (actionv === '+') {
+      res = parseFloat(prev) + parseFloat(currv)
       setPrev(res)
       setCurrv('');
-      console.log("p "+prev);
-      console.log("c "+currv);
+      console.log("p " + prev);
+      console.log("c " + currv);
     }
 
-    else if(actionv==='-') {
-      res = parseFloat(prev)-parseFloat(currv)
+    else if (actionv === '-') {
+      res = parseFloat(prev) - parseFloat(currv)
       setPrev(res)
     }
-    else{
+    else {
       res = 0;
     }
     setResult(res)

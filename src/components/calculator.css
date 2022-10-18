@@ -112,6 +112,10 @@ button {
   .title {
     margin-bottom: 40px;
   }
+  
+  .container{
+    scale: 1 !important;
+  }
 
  
 
@@ -125,6 +129,8 @@ button {
   .container{
     scale: 2.4;
   }
+  
+
 
  
 

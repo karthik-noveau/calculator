@@ -107,33 +107,26 @@ button {
 }
 
 
-@media(min-width:600px) {
- 
-  .title {
-    margin-bottom: 40px;
-  }
-  
-  .container{
-    scale: 1 !important;
-  }
-
- 
-
-}
-
 @media(max-width:600px) {
  
   .title {
     margin-bottom: 40px;
   }
-  .container{
-    scale: 2.4;
-  }
+  
+  .container {
+     
+    margin-top:70px;
+}
+
+ 
+
+}
+ 
   
 
 
  
 
-}
+ 
 
  

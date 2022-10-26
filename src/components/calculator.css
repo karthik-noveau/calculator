@@ -32,10 +32,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top:30px;
 
 }
 
 .calculator {
+  margin-top: 10px;
   max-width: 320px;
   background: #eee;
   background: white;
@@ -70,8 +72,12 @@ button {
   border: 0;
   padding: -16.7px;
   text-align: right;
-  width: 100%;
+  width: 98.8%;
   height: 61px;
+
+}
+.calc-numbers-one{
+  border-radius: 9px 9px 0px 0px ;
 }
 
 .span-2 {

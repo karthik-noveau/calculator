@@ -83,7 +83,7 @@ function Calculator() {
 
         <div className="calculator">
 
-          <input type="text" className="calc-numbers" value={Display} />
+          <input type="text" className="calc-numbers calc-numbers-one" value={Display} />
           <input type="text" className="calc-numbers" value={result} />
 
 

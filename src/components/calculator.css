@@ -44,6 +44,7 @@ body {
   width: 400px;
   border-radius: 12px;
   box-shadow: 0 5px 30px -5px rgba(0, 0, 0, 0.6);
+  
 }
 
 /* Buttons */
@@ -52,6 +53,8 @@ body {
   grid-gap: 10px;
   grid-template-columns: repeat(4, 1fr);
   padding: 10px;
+  font-size:20px !important ;
+  font-weight: bold;
 }
 
 button {
@@ -121,7 +124,7 @@ button {
   
   .container {
      
-    margin-top:70px;
+    margin-top:30px;
 }
 
  

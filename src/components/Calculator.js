@@ -1,145 +1,137 @@
-import { useState } from "react";
+import React, { Component } from "react";
 import "./calculator.css";
 
-function Calculator() {
-  const [Display, setDisplay] = useState('');
-  const [currv, setCurrv] = useState('');
-  const [prev, setPrev] = useState('');
-  const [actionv, setActionv] = useState('');
-  const [result, setResult] = useState('');
-  var res = '';
-  const numberButton = (e) => {
-    let temp = e.target.name;
+class App extends Component {
+  state = {
+    result: "",
+    display: "",
+    final_res: ""
+  };
 
-    setDisplay((e) => e + temp)
-    setCurrv((e) => e + temp)
-
-  }
-
-  const actionButton = (e) => {
-
-    let temp = e.target.name;
-    setDisplay((e) => e + temp)
-    if (prev === '') {
-      setPrev(currv);
-      console.log(currv)
-      setCurrv('');
-      setActionv(temp);
-    }
-    if (prev !== '') {
-      setPrev(res);
-      setActionv(temp)
-      console.log(setPrev)
-    }
-  }
-
-  const resultButton = () => {
-    if (actionv === '/') {
-      res = parseFloat(prev) / parseFloat(currv)
-      setPrev(res)
-    }
-    else if (actionv === 'x') {
-      res = parseFloat(prev) * parseFloat(currv)
-      setPrev(res)
-    }
-    else if (actionv === '+') {
-      res = parseFloat(prev) + parseFloat(currv)
-      setPrev(res)
-      setCurrv('');
-      console.log("p " + prev);
-      console.log("c " + currv);
+  onClick = (button) => {
+    if (
+      button != "=" &&
+      button != "C" &&
+      button != "CE" &&
+      button != "(" &&
+      button != ")"
+    ) {
+      this.setState({
+        display: this.state.display + button
+      });
     }
 
-    else if (actionv === '-') {
-      res = parseFloat(prev) - parseFloat(currv)
-      setPrev(res)
+    if (button === "=") {
+      this.calculate();
+      this.setState({ display: "" });
+    } else if (button === "C") {
+      this.reset();
+    } else if (button === "CE") {
+      this.backspace();
+    } else {
+      this.setState({
+        result: this.state.result + button
+      });
     }
-    else {
-      res = 0;
+  };
+
+  calculate = () => {
+    var checkResult = "";
+    if (this.state.result.includes("--")) {
+      checkResult = this.state.result.replace("--", "+");
+    } else {
+      checkResult = this.state.result;
     }
-    setResult(res)
 
-  }
+    try {
+      this.setState({
+        final_res: (eval(checkResult) || "") + ""
+      });
+    } catch (e) {
+      this.setState({
+        result: "error"
+      });
+    }
+  };
 
-  const backButton = () => {
-    let len = Display.length;
-    setDisplay(Display.slice(0, len - 1))
-  }
+  reset = () => {
+    this.setState({
+      result: ""
+    });
+  };
 
-  const clearButton = () => {
-    setDisplay('')
-    setCurrv('')
-    setActionv('')
-    setResult('')
-    setPrev('')
-  }
+  backspace = () => {
+    this.setState({
+      result: this.state.result.slice(0, -1)
+    });
+  };
 
-
-  return (
-    <div className="main_container">
+  render() {
+    return (
+      <div className="main_container">
       <div className="container">
 
         <h1 className="title">React Calculator</h1>
 
         <div className="calculator">
 
-          <input type="text" className="calc-numbers calc-numbers-one" value={Display} />
-          <input type="text" className="calc-numbers" value={result} />
+          <input type="text" className="calc-numbers calc-numbers-one" value={this.state.result} />
+          <input type="text" className="calc-numbers" value={this.state.final_res} />
 
 
           <div className="calculator-buttons">
-            <button onClick={clearButton} className="btn clear span-2">
-              C
+            <button name="C" onClick={(e) => this.onClick(e.target.name)}>
+            C
             </button>
-            <button onClick={backButton} className="btn orange ">
+            <button name="CE" onClick={(e) => this.onClick(e.target.name)} className="btn orange ">
               &larr;
             </button>
-            <button onClick={actionButton} name="/" className="btn orange ">
+            <button name="/" onClick={(e) => this.onClick(e.target.name)} className="btn orange ">
               &divide;
             </button>
-            <button onClick={numberButton} name="7" className="btn">
+            <button name="7" onClick={(e) => this.onClick(e.target.name)} className="btn">
               7
             </button>
-            <button onClick={numberButton} name="8" className="btn">
+            <button name="8" onClick={(e) => this.onClick(e.target.name)} className="btn">
               8
             </button>
-            <button onClick={numberButton} name="6" className="btn">
+            <button name="9" onClick={(e) => this.onClick(e.target.name)} className="btn">
               9
             </button>
-            <button onClick={actionButton} name="x" className="btn orange">
+            <button name="*" onClick={(e) => this.onClick(e.target.name)} className="btn orange">
               x
             </button>
-            <button onClick={numberButton} name="4" className="btn">
+            <button name="4" onClick={(e) => this.onClick(e.target.name)} className="btn">
               4
             </button>
-            <button onClick={numberButton} name="5" className="btn">
+            <button name="5" onClick={(e) => this.onClick(e.target.name)} className="btn">
               5
             </button>
-            <button onClick={numberButton} name="6" className="btn">
+            <button name="6" onClick={(e) => this.onClick(e.target.name)} className="btn">
               6
             </button>
-            <button onClick={actionButton} name="-" className="btn orange">
+            <button name="-" onClick={(e) => this.onClick(e.target.name)} className="btn orange">
               -
             </button>
-            <button onClick={numberButton} name="1" className="btn">
+            <button name="1" onClick={(e) => this.onClick(e.target.name)} className="btn">
               1
             </button>
-            <button onClick={numberButton} name="2" className="btn">
+            <button name="2" onClick={(e) => this.onClick(e.target.name)} className="btn">
               2
             </button>
-            <button onClick={numberButton} name="3" className="btn">
+            <button name="3" onClick={(e) => this.onClick(e.target.name)} className="btn">
               3
             </button>
-            <button onClick={actionButton} name="+" className="btn orange">
+            <button name="+" onClick={(e) => this.onClick(e.target.name)} className="btn orange">
               +
             </button>
-            <button onClick={numberButton} name="0" className="btn">
+            <button name="0" onClick={(e) => this.onClick(e.target.name)} className="btn">
               0
             </button>
-            <button onClick={numberButton} name="." className="btn">
+            <button name="." onClick={(e) => this.onClick(e.target.name)} className="btn">
               .
             </button>
-            <button onClick={resultButton} name="=" className="btn orange  equal span-2">
+            <button name="=" onClick={(e) => this.onClick(e.target.name)} className="btn orange  equal span-2">
               =
             </button>
           </div>
@@ -147,6 +139,7 @@ function Calculator() {
       </div>
     </div>
   );
+  }
 }
 
-export default Calculator;
+export default App;
